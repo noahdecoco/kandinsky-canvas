@@ -3,18 +3,22 @@ const getRandom = num => Math.ceil(Math.random() * num);
 class GraphicsModule {
   drawLine(x, y) {
     const graphic = new PIXI.Graphics();
+    graphic.cacheAsBitmapboolean = true;
+
     const length = 60 + getRandom(160);
 
     graphic.lineStyle(getRandom(5), 0x000000);
 
-    graphic.moveTo(x, y);
-    graphic.lineTo(x + length, y + length);
+    graphic.moveTo(x - length/2, y);
+    graphic.lineTo(x + length/2, y);
 
     return graphic;
   }
 
   drawRings(x, y) {
     const graphic = new PIXI.Graphics();
+    graphic.cacheAsBitmapboolean = true;
+
     const baseRadius = 30 + Math.ceil(Math.random() * 40);
     const numCircles = getRandom(8);
     let radius = baseRadius;
@@ -31,6 +35,8 @@ class GraphicsModule {
 
   drawCircle(x, y) {
     const graphic = new PIXI.Graphics();
+    graphic.cacheAsBitmapboolean = true;
+
     const baseRadius = 30 + getRandom(40);
 
     graphic.lineStyle(getRandom(5), 0x000000);
@@ -45,9 +51,11 @@ class GraphicsModule {
 
   drawArcs(x, y) {
     const graphic = new PIXI.Graphics();
+    graphic.cacheAsBitmapboolean = true;
+
     const baseRadius = 30 + getRandom(40);
     const num = getRandom(8);
-    const startAngle = getRandom(6);
+    const startAngle = getRandom(0);
     const endAngle = startAngle + getRandom(3);
 
     let radius = baseRadius;

@@ -1,7 +1,8 @@
+const Pixi = require('pixi.js');
 const TimelineLite = require('gsap/TimelineLite');
-const Line = require('./Line');
 
-const getRandom = num => Math.ceil(Math.random() * num);
+const Line = require('./Line');
+const utils = require('../../utils');
 
 class GraphicsModule {
   drawLine(x, y) {
@@ -12,11 +13,11 @@ class GraphicsModule {
     const graphic = new PIXI.Graphics();
     graphic.cacheAsBitmapboolean = true;
 
-    const baseRadius = 30 + Math.ceil(Math.random() * 40);
-    const numCircles = getRandom(8);
+    const baseRadius = 30 + utils.getRandom(40);
+    const numCircles = utils.getRandom(8);
     let radius = baseRadius;
 
-    graphic.lineStyle(getRandom(5), 0x000000);
+    graphic.lineStyle(utils.getRandom(5), 0x000000);
 
     for (let i = 0; i < numCircles; i++) {
       radius += Math.random() < 0.2 ? 20 : 5;
@@ -30,9 +31,9 @@ class GraphicsModule {
     const graphic = new PIXI.Graphics();
     graphic.cacheAsBitmapboolean = true;
 
-    const baseRadius = 30 + getRandom(40);
+    const baseRadius = 30 + utils.getRandom(40);
 
-    graphic.lineStyle(getRandom(5), 0x000000);
+    graphic.lineStyle(utils.getRandom(5), 0x000000);
     graphic.beginFill(0x000000);
 
     graphic.drawCircle(x, y, radius);
@@ -46,16 +47,16 @@ class GraphicsModule {
     const graphic = new PIXI.Graphics();
     graphic.cacheAsBitmapboolean = true;
 
-    const baseRadius = 30 + getRandom(40);
-    const num = getRandom(8);
-    const startAngle = getRandom(0);
-    const endAngle = startAngle + getRandom(3);
+    const baseRadius = 30 + utils.getRandom(40);
+    const num = utils.getRandom(8);
+    const startAngle = utils.getRandom(0);
+    const endAngle = startAngle + utils.getRandom(3);
 
     let radius = baseRadius;
 
     for (let i = 0; i < num; i++) {
       radius += Math.random() < 0.2 ? 20 : 5;
-      graphic.lineStyle(getRandom(5), 0x000000);
+      graphic.lineStyle(utils.getRandom(5), 0x000000);
       graphic.moveTo(x + radius, y);
       graphic.arc(x, y, radius, startAngle, endAngle);
     }
@@ -63,8 +64,8 @@ class GraphicsModule {
     return graphic;
   }
 
-  getRandom(x, y) {
-    let random = getRandom(3);
+  drawRandom(x, y) {
+    let random = utils.getRandom(3);
 
     switch (random) {
       case 1:

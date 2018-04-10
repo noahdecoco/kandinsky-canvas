@@ -1,18 +1,16 @@
 const Pixi = require('pixi.js');
 const TimelineLite = require('gsap/TimelineLite');
+const utils = require('../../utils');
+const Graphic = require('./Graphic');
 
-const getRandom = num => Math.ceil(Math.random() * num);
-
-class Line {
-  constructor(x, y) {
-    this.graphic = new Pixi.Graphics();
-    this.graphic.cacheAsBitmapboolean = true;
-
+class Line extends Graphic {
+  constructor(x, y, graphic) {
+    super(x, y);
     this.x = x;
     this.y = y;
 
-    this.length = 60 + getRandom(160);
-    this.thickness = getRandom(5);
+    this.length = 60 + utils.getRandom(160);
+    this.thickness = utils.getRandom(5);
 
     this.startPoint = {
       x: x - this.length / 2,
@@ -54,14 +52,6 @@ class Line {
       },
       0,
     );
-  }
-
-  get graphic() {
-    return this._graphic;
-  }
-
-  set graphic(graphic) {
-    this._graphic = graphic;
   }
 }
 

@@ -4,7 +4,7 @@ import 'pixi.js';
 import 'leapjs';
 import 'leapjs-plugins';
 
-import GraphicsModule from './GraphicsModule';
+import GraphicsModule from './modules/GraphicsModule';
 
 class KandinskyCanvas {
   constructor() {
@@ -32,7 +32,6 @@ class KandinskyCanvas {
 
   drawGraphic(x, y) {
     const graphic = GraphicsModule.drawLine(x, y);
-    console.log(graphic.graphic);
     this.app.stage.addChild(graphic.graphic);
     graphic.animateIn();
   }

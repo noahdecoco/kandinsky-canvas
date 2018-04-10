@@ -1,18 +1,11 @@
+const TimelineLite = require('gsap/TimelineLite');
+const Line = require('./Line');
+
 const getRandom = num => Math.ceil(Math.random() * num);
 
 class GraphicsModule {
   drawLine(x, y) {
-    const graphic = new PIXI.Graphics();
-    graphic.cacheAsBitmapboolean = true;
-
-    const length = 60 + getRandom(160);
-
-    graphic.lineStyle(getRandom(5), 0x000000);
-
-    graphic.moveTo(x - length/2, y);
-    graphic.lineTo(x + length/2, y);
-
-    return graphic;
+    return new Line(x, y);
   }
 
   drawRings(x, y) {
@@ -71,20 +64,19 @@ class GraphicsModule {
   }
 
   getRandom(x, y) {
-      let random = getRandom(3);
+    let random = getRandom(3);
 
-      switch (random) {
-          case 1:
-            return this.drawArcs(x, y);
-          case 2:
-            return this.drawRings(x, y);
-          case 3:
-            return this.drawLine(x, y);
-          case 4:
-            return this.drawCircle(x, y);
-      }
+    switch (random) {
+      case 1:
+        return this.drawArcs(x, y);
+      case 2:
+        return this.drawRings(x, y);
+      case 3:
+        return this.drawLine(x, y);
+      case 4:
+        return this.drawCircle(x, y);
+    }
   }
-
-};
+}
 
 module.exports = new GraphicsModule();

@@ -22,6 +22,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "gsap": "^1.20.4",
     "leapjs": "^0.6.4",
     "leapjs-plugins": "^0.1.12",
     "pixi.js": "^4.7.1"

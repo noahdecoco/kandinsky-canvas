@@ -5,8 +5,8 @@ const Line = require('./Line');
 const utils = require('../../utils');
 
 class GraphicsModule {
-  drawLine(x, y) {
-    return new Line(x, y);
+  drawLine(x, y, options) {
+    return new Line(x, y, options);
   }
 
   drawRings(x, y) {

@@ -7,6 +7,8 @@ class Graphic {
     this.graphic.cacheAsBitmapboolean = true;
   }
 
+  render() {}
+
   animateIn() {
     // default animateIn
   }

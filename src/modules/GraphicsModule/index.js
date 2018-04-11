@@ -2,9 +2,14 @@ const Pixi = require('pixi.js');
 const TimelineLite = require('gsap/TimelineLite');
 
 const Line = require('./Line');
+const Arc = require('./Arc');
 const utils = require('../../utils');
 
 class GraphicsModule {
+  drawArc(x, y, options) {
+    return new Arc(x, y, options);
+  }
+
   drawLine(x, y, options) {
     return new Line(x, y, options);
   }
@@ -39,27 +44,6 @@ class GraphicsModule {
     graphic.drawCircle(x, y, radius);
 
     graphic.endFill();
-
-    return graphic;
-  }
-
-  drawArcs(x, y) {
-    const graphic = new PIXI.Graphics();
-    graphic.cacheAsBitmapboolean = true;
-
-    const baseRadius = 30 + utils.getRandom(40);
-    const num = utils.getRandom(8);
-    const startAngle = utils.getRandom(0);
-    const endAngle = startAngle + utils.getRandom(3);
-
-    let radius = baseRadius;
-
-    for (let i = 0; i < num; i++) {
-      radius += Math.random() < 0.2 ? 20 : 5;
-      graphic.lineStyle(utils.getRandom(5), 0x000000);
-      graphic.moveTo(x + radius, y);
-      graphic.arc(x, y, radius, startAngle, endAngle);
-    }
 
     return graphic;
   }

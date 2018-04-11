@@ -31,7 +31,7 @@ class KandinskyCanvas {
   }
 
   drawGraphic(x, y) {
-    const graphic = GraphicsModule.drawLine(x, y, { renderImmediately: true });
+    const graphic = GraphicsModule.drawArc(x, y, { renderImmediately: true });
     this.app.stage.addChild(graphic.graphic);
     graphic.animateIn();
   }

@@ -48,18 +48,18 @@ class GraphicsModule {
     return graphic;
   }
 
-  drawRandom(x, y) {
-    let random = utils.getRandom(3);
+  drawRandom(x, y, options) {
+    let random = utils.getRandom(2);
 
     switch (random) {
       case 1:
-        return this.drawArcs(x, y);
+        return this.drawArc(x, y, options);
       case 2:
-        return this.drawRings(x, y);
+        return this.drawLine(x, y, options);
       case 3:
-        return this.drawLine(x, y);
+        return this.drawRings(x, y, options);
       case 4:
-        return this.drawCircle(x, y);
+        return this.drawCircle(x, y, options);
     }
   }
 }

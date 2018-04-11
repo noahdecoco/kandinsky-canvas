@@ -9,6 +9,7 @@ import GraphicsModule from './modules/GraphicsModule';
 class KandinskyCanvas {
   constructor() {
     this.onCanvasClickHandler = this.onCanvasClickHandler.bind(this);
+    this.onHandHandler = this.onHandHandler.bind(this);
 
     this.setupPixiApp();
     this.setupLeapLoop();
@@ -27,11 +28,13 @@ class KandinskyCanvas {
   setupLeapLoop() {
     Leap.loop({
       hand: this.onHandHandler,
-    });
+    }).use('screenPosition');
   }
 
   drawGraphic(x, y) {
-    const graphic = GraphicsModule.drawArc(x, y, { renderImmediately: true });
+    const graphic = GraphicsModule.drawRandom(x, y, {
+      renderImmediately: false,
+    });
     this.app.stage.addChild(graphic.graphic);
     graphic.animateIn();
   }

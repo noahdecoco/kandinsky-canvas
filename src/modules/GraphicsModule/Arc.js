@@ -11,8 +11,9 @@ class Arc extends Graphic {
     this.options = options;
 
     this.radius = 30 + utils.getRandom(40);
-    this.startAngle = utils.getRandom(0);
+    this.startAngle = 0;
     this.endAngle = this.startAngle + utils.getRandom(3);
+    this.thickness = utils.getRandom(5);
 
     this.render = this.render.bind(this);
 
@@ -21,7 +22,7 @@ class Arc extends Graphic {
 
   render() {
     this.graphic.clear();
-    this.graphic.lineStyle(utils.getRandom(5), 0x000000);
+    this.graphic.lineStyle(this.thickness, 0x000000);
     this.graphic.moveTo(this.x + this.radius, this.y);
     this.graphic.arc(
       this.x,
@@ -34,6 +35,19 @@ class Arc extends Graphic {
 
   animateIn() {
     if (this.options.renderImmediately) return;
+
+    const tl = new TimelineLite({
+      onUpdate: this.render,
+    });
+
+    tl.from(
+      this,
+      1,
+      {
+        endAngle: 0,
+      },
+      0,
+    );
   }
 }
 

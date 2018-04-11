@@ -1,9 +1,11 @@
 const Pixi = require('pixi.js');
 const TimelineLite = require('gsap/TimelineLite');
 
-const Line = require('./Line');
-const Arc = require('./Arc');
 const utils = require('../../utils');
+
+const Arc = require('./Arc');
+const Line = require('./Line');
+const Ring = require('./Ring');
 
 class GraphicsModule {
   drawArc(x, y, options) {
@@ -14,22 +16,8 @@ class GraphicsModule {
     return new Line(x, y, options);
   }
 
-  drawRings(x, y) {
-    const graphic = new PIXI.Graphics();
-    graphic.cacheAsBitmapboolean = true;
-
-    const baseRadius = 30 + utils.getRandom(40);
-    const numCircles = utils.getRandom(8);
-    let radius = baseRadius;
-
-    graphic.lineStyle(utils.getRandom(5), 0x000000);
-
-    for (let i = 0; i < numCircles; i++) {
-      radius += Math.random() < 0.2 ? 20 : 5;
-      graphic.drawCircle(x, y, radius);
-    }
-
-    return graphic;
+  drawRing(x, y, options) {
+    return new Ring(x, y, options);
   }
 
   drawCircle(x, y) {
@@ -49,7 +37,7 @@ class GraphicsModule {
   }
 
   drawRandom(x, y, options) {
-    let random = utils.getRandom(2);
+    let random = utils.getRandom(3);
 
     switch (random) {
       case 1:
@@ -57,7 +45,7 @@ class GraphicsModule {
       case 2:
         return this.drawLine(x, y, options);
       case 3:
-        return this.drawRings(x, y, options);
+        return this.drawRing(x, y, options);
       case 4:
         return this.drawCircle(x, y, options);
     }

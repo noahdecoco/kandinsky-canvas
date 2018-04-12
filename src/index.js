@@ -4,6 +4,8 @@ import 'pixi.js';
 import 'leapjs';
 import 'leapjs-plugins';
 
+const utils = require('./utils');
+
 import GraphicsModule from './modules/GraphicsModule';
 
 class KandinskyCanvas {
@@ -44,10 +46,12 @@ class KandinskyCanvas {
   }
 
   onHandHandler(hand) {
+    if (!utils.hasTimePassed(150)) return;
     this.drawGraphic(hand.screenPosition()[0], hand.screenPosition()[1]);
   }
 
   onCanvasClickHandler(evt) {
+    if (!utils.hasTimePassed(150)) return;
     this.drawGraphic(evt.clientX, evt.clientY);
   }
 
